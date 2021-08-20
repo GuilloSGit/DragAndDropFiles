@@ -17,9 +17,9 @@ app.post("/upload", (req, res) => {
 });
 
 // Darle ruta al archivo cargado en el servidor
-/* fileUpload.mv(req.files.file.path, "/tmp/", (err) => {
-
-}); */
+fileUpload.mv(req.files.file.path, "/tmp/", (err) => {
+return res.status(500).send(err);
+});
 
 app.listen(3000, () => {
     console.log("Server running on port 3000");
