@@ -8,12 +8,12 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("Something");
+    res.send(`/${req.method} ${req.url}`);
 });
 
 app.post("/upload", (req, res) => {
     console.log(req.files.file);
-    res.send("Something");
+    res.send(`${req.files.file.name} was successfully uploaded`);
 });
 
 // Darle ruta al archivo cargado en el servidor
