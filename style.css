@@ -15,7 +15,7 @@ body {
 
 .drop-area {
     background-color: #ffffff;
-    border: 5px dashed #ddd;
+    border: 5px dashed rgb(146, 128, 128);
   height: 300px;
   width: 400px;
   border-radius: 5px;

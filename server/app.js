@@ -13,13 +13,11 @@ app.get("/", (req, res) => {
 
 app.post("/upload", (req, res) => {
     console.log(req.files.file);
-    res.send(`File ${req.files.file.name} uploaded`);
+    res.send("Something");
 });
 
 // Darle ruta al archivo cargado en el servidor
-fileUpload.mv(req.files.file.path, "/tmp/", (err) => {
-return res.status(500).send(err);
-});
+app.use(express.static('uploads'));
 
 app.listen(3000, () => {
     console.log("Server running on port 3000");
