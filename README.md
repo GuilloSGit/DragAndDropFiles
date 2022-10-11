@@ -4,7 +4,7 @@
 Drag & Drop Files es un proyecto que permite subir archivos a un servidor mediante drag & drop o selección de archivos.
 
 ## ¿Cómo funciona?
-El proyecto está desarrollado en JavaScript (Node). El servidor recibe los archivos mediante una petición POST y los guarda en una carpeta temporal.
+El proyecto está desarrollado en JavaScript (Node). El servidor recibe los archivos mediante una petición POST.
 
 ## ¿Cómo lo uso?
 Para usarlo, simplemente hay que clonar el repositorio y ejecutar el comando `npm install` para instalar las dependencias en la carpeta 'server'. Una vez instaladas, ejecutar el comando `npm start` para iniciar el servidor. El servidor estará disponible en el puerto 3000.
