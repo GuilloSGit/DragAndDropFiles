@@ -17,11 +17,9 @@ app.post("/upload", (req, res) => {
     console.log('\nEjemplo:')
     console.log('Tamaño del archivo: ' + req.files.file.size);
     console.log('Tipo de archivo: ' + req.files.file.mimetype);
-    // console.log('MD5 del archivo: ' + req.files.file.md5);
-    // console.log('Función mover del archivo: ' + req.files.file.mv);
 });
 
-// Darle ruta al archivo cargado en el servidor
+
 app.listen(3000, () => {
     console.log("Server running on port 3000");
 })

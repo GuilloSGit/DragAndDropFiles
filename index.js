@@ -15,19 +15,19 @@ input.addEventListener('change', (e) => {
     dropArea.classList.remove('active')
 });
 
-dropArea.addEventListener('dragover', (e) =>{
+dropArea.addEventListener('dragover', (e) => {
     e.preventDefault();
     dropArea.classList.add('active');
     dragText.textContent = "Drag your files"
 });
 
-dropArea.addEventListener('dragleave', (e) =>{
+dropArea.addEventListener('dragleave', (e) => {
     e.preventDefault();
     dropArea.classList.remove('active');
     dragText.textContent = "Drag and drop your files here"
 });
 
-dropArea.addEventListener('drop', (e) =>{
+dropArea.addEventListener('drop', (e) => {
     e.preventDefault();
     files = e.dataTransfer.files;
     showFiles(files)
@@ -36,19 +36,27 @@ dropArea.addEventListener('drop', (e) =>{
 });
 
 function showFiles(files) {
-    if(files.length === undefined){
+    if (files.length === undefined) {
         processFile(files);
-    } else{
+    } else {
         for (const file of files) {
             processFile(file)
         }
     }
 }
-function processFile(file){
-    const documentType = file.type;
-    const validExtensions = ['image/jpeg','image/jpg','image/png','image/gif'];
 
-    if(validExtensions.includes(documentType)){
+/**
+ * Processes the given file by validating its type, reading its content, 
+ * and displaying a preview of the image. If the file type is valid, 
+ * it also initiates the upload process.
+ *
+ * @param {File} file - The file to be processed.
+ */
+function processFile(file) {
+    const documentType = file.type;
+    const validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+
+    if (validExtensions.includes(documentType)) {
         const fileReader = new FileReader();
         const id = `file-${Math.random().toString(32).substring(7)}`;
 
@@ -68,12 +76,19 @@ function processFile(file){
         });
 
         fileReader.readAsDataURL(file);
-        uploadFile(file,id);
+        uploadFile(file, id);
     } else {
         alert(`It's not a valid file extension`)
     }
 }
 
+/**
+ * Uploads a file to the server.
+ *
+ * @param {File} file - The file to be uploaded.
+ * @param {string} id - The ID of the element to update the status text.
+ * @returns {Promise<void>} A promise that resolves when the upload is complete.
+ */
 async function uploadFile(file, id) {
     const formData = new FormData();
     formData.append("file", file);
